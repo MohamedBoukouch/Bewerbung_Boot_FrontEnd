@@ -14,17 +14,17 @@ export default function Navbar() {
 >
   <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-gray-900 flex items-center justify-center">
     <span className="text-white font-semibold text-sm md:text-base">
-      Z
+      B
     </span>
   </div>
 
   <div className="hidden sm:block">
     <h1 className="font-semibold text-base md:text-lg text-gray-900 leading-none">
-      Zertify
+      Bewerbung Boot
     </h1>
 
     <p className="text-[10px] text-gray-400 font-normal tracking-[0.12em] mt-0.5">
-      TELC PREP B1/B2
+      BEWERBUNGEN DEUTSCHLAND
     </p>
   </div>
 </Link>
@@ -83,13 +83,13 @@ export default function Navbar() {
       {/* ========== MOBILE NAV BAR ========== */}
       <div className="lg:hidden border-t border-gray-100/50 overflow-x-auto">
         <div className="flex items-center gap-0.5 px-2 py-1.5 min-w-max">
-          <MobileNavItem href="#lesen">Lesen</MobileNavItem>
-          <MobileNavItem href="#horen">Hören</MobileNavItem>
-          <MobileNavItem href="#schreiben">Schreiben</MobileNavItem>
-          <MobileNavItem href="#test">اختبر نفسك</MobileNavItem>
-          <MobileNavItem href="#exercises">
+          <MobileNavItem href="#features">الاستخراج</MobileNavItem>
+          <MobileNavItem href="#features">الإيميلات</MobileNavItem>
+          <MobileNavItem href="#faq">الأسئلة</MobileNavItem>
+          <MobileNavItem href="#pricing">الأسعار</MobileNavItem>
+          <MobileNavItem href="/billing">
             <FileText size={12} className="inline mr-1 text-gray-400" />
-            التسريبات
+            ابدأ الآن
           </MobileNavItem>
         </div>
       </div>

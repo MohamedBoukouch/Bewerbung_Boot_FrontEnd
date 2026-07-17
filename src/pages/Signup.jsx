@@ -2,23 +2,93 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://bewerbung-boot-backend.onrender.com/api";
+
+const PACKS = [
+  { id: 'test', name: 'باقة تجريبية', desc: 'مجاناً · 24 ساعة', price: 0 },
+  { id: 'standard', name: 'ستاندار', desc: '200 درهم / الشهر', price: 200 },
+  { id: '3mois', name: 'باقة 3 أشهر', desc: '450 درهم / 3 أشهر', price: 450 },
+  { id: '6mois', name: 'باقة 6 أشهر', desc: '720 درهم / 6 أشهر', price: 720 },
+];
+
 const Signup = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    level: '',
+    fullName: '',
     email: '',
-    password: '',
+    phone: '',
   });
-  const [showPassword, setShowPassword] = useState(false);
+  const [selectedPack, setSelectedPack] = useState('test');
+  const [errors, setErrors] = useState({});
+  const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const validate = () => {
+    const next = {};
+    if (!formData.fullName.trim()) next.fullName = 'الرجاء إدخال الاسم الكامل.';
+    if (!formData.email.trim()) {
+      next.email = 'الرجاء إدخال البريد الإلكتروني.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      next.email = 'صيغة البريد الإلكتروني غير صحيحة.';
+    }
+    const digits = formData.phone.replace(/[^0-9]/g, '');
+    if (!digits) {
+      next.phone = 'الرجاء إدخال رقم الهاتف.';
+    } else if (digits.length !== 10) {
+      next.phone = 'رقم الهاتف لازم يكون فيه 10 أرقام بالضبط.';
+    }
+    return next;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle signup logic here
+    setSuccess(false);
+
+    const next = validate();
+    if (Object.keys(next).length > 0) {
+      setErrors(next);
+      return;
+    }
+
+    setErrors({});
+    setSubmitting(true);
+    try {
+      const selected = PACKS.find((p) => p.id === selectedPack);
+      const res = await fetch(`${API_BASE}/access/leads/submit`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          pack: selected.name,
+          full_name: formData.fullName.trim(),
+          email: formData.email.trim(),
+          whatsapp: formData.phone.trim(),
+        }),
+      });
+
+      let data = {};
+      try {
+        data = await res.json();
+      } catch (parseErr) {
+        // ignore parse error, rely on status below
+      }
+
+      if (!res.ok) {
+        throw new Error(data.detail || 'حدث خطأ، حاول مرة أخرى.');
+      }
+
+      setSuccess(true);
+    } catch (err) {
+      setErrors({ form: err.message || 'حدث خطأ، حاول مرة أخرى.' });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -48,77 +118,62 @@ const Signup = () => {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-2">
           إنشاء حساب
         </h1>
-        <p className="text-gray-500 text-sm md:text-base font-normal text-center mb-8 md:mb-10">
-          ابدأ رحلتك نحو إتقان اللغة الألمانية اليوم.
+        <p className="text-gray-500 text-sm md:text-base font-normal text-center mb-6 md:mb-8">
+          سجّل بياناتك واختار الباقة اللي بغيتيها.
         </p>
+
+        {/* Success banner */}
+        {success && (
+          <div className="mb-5 flex items-start gap-3 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-700">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+              <p className="text-sm font-bold">تم تسجيل طلبك بنجاح !</p>
+              <p className="text-xs mt-0.5">غادي نتواصلو معاك على الواتساب باش نفعّلو الباقة ديالك.</p>
+            </div>
+          </div>
+        )}
+
+        {/* General form error */}
+        {errors.form && (
+          <div className="mb-5 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-red-700">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <p className="text-sm font-medium">{errors.form}</p>
+          </div>
+        )}
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="flex flex-col gap-5 md:gap-6">
-          {/* Name fields */}
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-5">
-            <div className="flex-1">
-              <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
-                الاسم الأول
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                className="w-full h-12 md:h-14 px-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm font-normal text-right focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 transition-all"
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
-                اسم العائلة
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleChange}
-                className="w-full h-12 md:h-14 px-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm font-normal text-right focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 transition-all"
-                required
-              />
-            </div>
-          </div>
-
-          {/* Level select */}
+          {/* Full name */}
           <div>
             <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
-              المستوى المستهدف
+              الاسم الكامل
             </label>
-            <div className="relative">
-              <select
-                name="level"
-                value={formData.level}
-                onChange={handleChange}
-                className="w-full h-12 md:h-14 px-4 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm font-normal text-right appearance-none focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 transition-all cursor-pointer"
-                required
-              >
-                <option value="">اختر مستوى الامتحان الخاص بك</option>
-                <option value="b1">TELC B1</option>
-                <option value="b2">TELC B2</option>
-              </select>
-              <svg
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </div>
+            <input
+              type="text"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              placeholder="مثال: محمد العلمي"
+              className={`w-full h-12 md:h-14 px-4 rounded-xl border bg-white text-gray-900 text-sm font-normal text-right placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
+                errors.fullName
+                  ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
+                  : 'border-gray-200 focus:border-indigo-300 focus:ring-indigo-100'
+              }`}
+            />
+            {errors.fullName && <p className="text-red-500 text-xs mt-1 text-right">{errors.fullName}</p>}
           </div>
 
           {/* Email */}
           <div>
             <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
-              عنوان البريد الإلكتروني
+              البريد الإلكتروني
             </label>
             <div className="relative">
               <input
@@ -127,8 +182,11 @@ const Signup = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className="w-full h-12 md:h-14 px-4 pl-12 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm font-normal text-right placeholder:text-gray-400 focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 transition-all"
-                required
+                className={`w-full h-12 md:h-14 px-4 pl-12 rounded-xl border bg-white text-gray-900 text-sm font-normal text-right placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
+                  errors.email
+                    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
+                    : 'border-gray-200 focus:border-indigo-300 focus:ring-indigo-100'
+                }`}
               />
               <svg
                 className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -143,51 +201,96 @@ const Signup = () => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
             </div>
+            {errors.email && <p className="text-red-500 text-xs mt-1 text-right">{errors.email}</p>}
           </div>
 
-          {/* Password */}
+          {/* Phone */}
           <div>
             <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
-              كلمة المرور
+              رقم الهاتف (واتساب)
             </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="أدخل كلمة مرور قوية"
-                className="w-full h-12 md:h-14 px-4 pl-12 rounded-xl border border-gray-200 bg-white text-gray-900 text-sm font-normal text-right placeholder:text-gray-400 focus:outline-none focus:border-indigo-300 focus:ring-2 focus:ring-indigo-100 transition-all"
-                required
+                type="tel"
+                inputMode="numeric"
+                name="phone"
+                value={formData.phone}
+                onChange={(e) => {
+                  const onlyDigits = e.target.value.replace(/[^0-9]/g, '').slice(0, 10);
+                  handleChange({ target: { name: 'phone', value: onlyDigits } });
+                }}
+                placeholder="06XXXXXXXX"
+                className={`w-full h-12 md:h-14 px-4 pl-12 rounded-xl border bg-white text-gray-900 text-sm font-normal text-right placeholder:text-gray-400 focus:outline-none focus:ring-2 transition-all ${
+                  errors.phone
+                    ? 'border-red-400 focus:border-red-400 focus:ring-red-100'
+                    : 'border-gray-200 focus:border-indigo-300 focus:ring-indigo-100'
+                }`}
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
+              <svg
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                {showPassword ? (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                    <circle cx="12" cy="12" r="3"></circle>
-                  </svg>
-                ) : (
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
-                    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
-                    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
-                    <line x1="2" y1="2" x2="22" y2="22"></line>
-                  </svg>
-                )}
-              </button>
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">
+                {formData.phone.replace(/[^0-9]/g, '').length}/10
+              </span>
+            </div>
+            {errors.phone && <p className="text-red-500 text-xs mt-1 text-right">{errors.phone}</p>}
+          </div>
+
+          {/* Pack selection */}
+          <div>
+            <label className="block text-gray-600 text-sm font-normal mb-2 text-right">
+              اختر الباقة
+            </label>
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
+              {PACKS.map((pack) => {
+                const active = selectedPack === pack.id;
+                return (
+                  <button
+                    key={pack.id}
+                    type="button"
+                    onClick={() => setSelectedPack(pack.id)}
+                    className={`flex flex-col items-start text-right rounded-xl border px-3 py-3 transition-all ${
+                      active
+                        ? 'border-indigo-500 bg-indigo-50 ring-2 ring-indigo-100'
+                        : 'border-gray-200 bg-white hover:border-indigo-200'
+                    }`}
+                  >
+                    <span className={`text-sm font-bold ${active ? 'text-indigo-700' : 'text-gray-800'}`}>
+                      {pack.name}
+                    </span>
+                    <span className="text-[11px] md:text-xs text-gray-500 mt-0.5">
+                      {pack.desc}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full h-12 md:h-14 bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-base md:text-lg rounded-xl transition-colors shadow-lg shadow-indigo-200/50 mt-2"
+            disabled={submitting}
+            className="w-full h-12 md:h-14 bg-indigo-500 hover:bg-indigo-600 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-base md:text-lg rounded-xl transition-colors shadow-lg shadow-indigo-200/50 mt-2 flex items-center justify-center gap-2"
           >
-            إنشاء حساب
+            {submitting ? (
+              <>
+                <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="30 70" />
+                </svg>
+                جارٍ الإرسال...
+              </>
+            ) : (
+              'إنشاء حساب'
+            )}
           </button>
         </form>
 

@@ -34,13 +34,13 @@ export default function Footer() {
           {/* ========== RIGHT: Brand ========== */}
           <div className="flex flex-col items-center md:items-end gap-2 text-center md:text-right">
             <div className="flex items-center gap-2">
-              <span className="text-gray-900 font-normal text-sm md:text-base">Zertify</span>
+              <span className="text-gray-900 font-normal text-sm md:text-base">Bewerbung Boot</span>
               <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-indigo-500 flex items-center justify-center">
-                <span className="text-white font-normal text-xs md:text-sm">Z</span>
+                <span className="text-white font-normal text-xs md:text-sm">B</span>
               </div>
             </div>
             <p className="text-gray-400 text-xs md:text-sm font-normal max-w-[280px] md:max-w-[320px] leading-relaxed">
-              المعيار المهني المتكامل للتحضير لشهادات اللغة الألمانية.
+              المنصة الأولى فالمغرب باش تلقى شركات ألمانيا وتبعت ليهم الإيميلات أوتوماتيكياً.
             </p>
           </div>
         </div>

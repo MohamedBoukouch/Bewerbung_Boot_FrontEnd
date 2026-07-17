@@ -78,7 +78,7 @@ const Logo = () => (
 /* ── Nav items ──────────────────────────────────────────── */
 const NAV = [
   { to: "/dashboard-client/datenextraktion", label: "Datenextraktion", Icon: IconTarget },
-  { to: "/dashboard-client", label: "Erstellung von Anschreib...", Icon: IconFileEdit, end: true },
+  { to: "/dashboard-client/coverletter", label: "Erstellung von Anschreib...", Icon: IconFileEdit, end: true },
   { to: "/dashboard-client/emails-senden", label: "E-Mails senden", Icon: IconSend },
 ];
 
@@ -177,7 +177,7 @@ export default function DashboardClientLayout() {
 
         <div className="flex-1" />
 
-        <div className={`hidden md:flex px-2 pb-2 ${open ? "" : "justify-center"}`}>
+        {/* <div className={`hidden md:flex px-2 pb-2 ${open ? "" : "justify-center"}`}>
           <button
             onClick={() => setOpen(p => !p)}
             className="flex items-center gap-2.5 w-full px-3 py-2.5 rounded-lg text-gray-500 hover:bg-gray-100 hover:text-gray-800 transition-colors"
@@ -188,7 +188,7 @@ export default function DashboardClientLayout() {
               Schliessen
             </span>
           </button>
-        </div>
+        </div> */}
 
         <div className="px-2 pb-2">
           <div className="relative">

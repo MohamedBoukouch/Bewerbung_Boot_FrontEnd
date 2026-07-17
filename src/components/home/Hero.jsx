@@ -1,5 +1,5 @@
 import React from 'react';
-import certificateImage from "../../assets/certificate.jpg";
+import certificateImage from "../../assets/certificate.png";
 
 
 const Hero = () => {
@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 lg:gap-12">
 
-          {/* ========== LEFT: Certificate Image with float animation ========== */}
+          {/* ========== LEFT: Mockup Image with float animation ========== */}
           <div className="w-full lg:w-[45%] xl:w-[42%] flex justify-center lg:justify-start order-2 lg:order-1">
             <div className="relative w-full max-w-[320px] md:max-w-[380px] lg:max-w-[420px]">
               {/* Phone frame with float animation */}
@@ -30,7 +30,7 @@ const Hero = () => {
                 <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border border-gray-100">
                   <img 
                   src={certificateImage} 
-                    alt="TELC Zertifikat B2"
+                    alt="Bewerbung Boot Dashboard"
                     className="w-full h-auto object-cover"
                   />
                 </div>
@@ -47,36 +47,28 @@ const Hero = () => {
             <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-5 md:mb-6">
               <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-indigo-500 rounded-full" />
               <span className="text-indigo-600 text-[11px] md:text-xs font-normal">
-                جديد: وجد لـ TELC B1 & B2 و تتا هاني
+                جديد: استخراج شركات ألمانيا أوتوماتيكي
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] font-normal text-gray-900 leading-[1.2] md:leading-[1.15] mb-4 md:mb-5">
-              <span className="text-indigo-500">TELC B1 & B2</span>{' '}
+              <span className="text-indigo-500">Bewerbung Boot</span>{' '}
               <span className="text-gray-900">أول منصة</span>
               <br className="hidden md:block" />
-              <span className="text-gray-900">خاليه من اخطاء PDFs!</span>
+              <span className="text-gray-900">كترسل الإيميلات لألمانيا!</span>
             </h1>
 
             {/* Description */}
             <p className="text-gray-500 text-sm md:text-base lg:text-lg font-normal leading-[1.8] md:leading-[1.9] max-w-[500px] lg:max-w-[540px] mb-7 md:mb-8 lg:mb-10">
-              هنا غادي تلقى كل المواضيع الجديدة، و مواضيع تركيا اللي ولات كتظهر مؤخراً. كل ما يخص{' '}
-              <span className="text-gray-700 font-normal">Lesen</span>{' '}
-              غادي تلقاه مجموع ومنظم فبلاصة وحدة، باش ما تضيعش الوقت فالتقلاب على الـ PDF والأخطاء اللي فيهم. إضافة لواحشي: قسم{' '}
-              <span className="text-gray-700 font-normal">Hören</span>{' '}
-              متوفر بالأوديوهات بحال الامتحان، و{' '}
-              <span className="text-gray-700 font-normal">Schreiben</span>{' '}
-              كيتصحح بالذكاء الاصطناعي. وأي جديد كينزل فالموقع كتوصلك بيه إشعار{' '}
-              <span className="text-gray-700 font-normal">(notification)</span>{' '}
-              مباشرة.
+              هنا غادي تلقى آلاف الشركات فألمانيا، وكترسل ليهم الإيميلات ديالك أوتوماتيكياً مع الـ CV والـ Anschreiben (رسالة التقديم). المنصة كتستخرج الإيميلات، كتكتب الرسالة بالذكاء الاصطناعي، وكتبعت لشركات بواحد واحد باش ما تدخلش فـ Spam. إضافة لواحشي: كتتبع كل شركة جاها الإيمال ولا لا مباشرة فالداشبورد.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto">
               {/* WhatsApp */}
               <a
-                href="https://wa.me/212600000000"
+                href="https://wa.me/212659159044"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-normal text-sm md:text-base rounded-xl md:rounded-2xl px-6 py-3 md:px-8 md:py-4 transition-colors"
@@ -96,14 +88,14 @@ const Hero = () => {
                   <line x1="19" y1="12" x2="5" y2="12"></line>
                   <polyline points="12 19 5 12 12 5"></polyline>
                 </svg>
-                <span>استكشف التمارين</span>
+                <span>اكتشف المنصة</span>
               </a>
             </div>
 
             {/* Bottom trust text */}
             <p className="mt-6 md:mt-8 text-gray-400 text-xs md:text-sm font-normal">
-              <span className="text-gray-600 font-normal">TELC</span>{' '}
-              موثوق به من قبل الطلاب الذين يستعدون لـ
+              <span className="text-gray-600 font-normal">Bewerbung Boot</span>{' '}
+              موثوق بها من طرف المغاربة اللي كيبعتوا الإيميلات لألمانيا
             </p>
           </div>
         </div>

@@ -30,13 +30,13 @@ const AvisClient = () => {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative text-center mb-10 md:mb-14">
         <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-2 mb-5">
           <span className="w-2 h-2 bg-indigo-500 rounded-full" />
-          <span className="text-indigo-600 text-xs font-normal">آراء حقيقية من طلابنا</span>
+          <span className="text-indigo-600 text-xs font-normal">تجارب حقيقية من المستخدمين</span>
         </div>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal text-gray-900 leading-snug mb-3">
-          آراء <span className="text-indigo-500">المشتركين</span>
+          آراء <span className="text-indigo-500">المستخدمين</span>
         </h2>
         <p className="text-gray-500 text-sm md:text-base font-normal max-w-md mx-auto leading-relaxed">
-          شوف آراء وتجارب الطلاب اللي اشتركوا معانا فالمنصة ديالنا
+          شوف آراء وتجارب المغاربة اللي رسلوا الإيميلات لشركات ألمانيا معانا
         </p>
       </div>
 

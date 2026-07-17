@@ -7,6 +7,7 @@ import DashboardClient from "../pages/DashboardClient";
 import Datenextraktion from "../pages/Datenextraktion";
 import EmailsSenden from "../pages/EmailsSenden";
 import MyApplications from "../pages/MyApplications";
+import Cover_Letter from "../pages/Cover_Letter";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -32,6 +33,8 @@ export default function AppRoutes() {
         <Route path="/dashboard-client" element={<DashboardLayout />}>
           <Route index element={<DashboardClient />} />
           <Route path="datenextraktion" element={<Datenextraktion />} />
+          <Route path="coverletter" element={<Cover_Letter />} />
+
           <Route path="emails-senden" element={<EmailsSenden />} />
           <Route path="my-applications" element={<MyApplications />} />
         </Route>
