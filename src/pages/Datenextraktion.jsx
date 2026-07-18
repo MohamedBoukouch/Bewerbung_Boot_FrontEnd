@@ -736,7 +736,21 @@ export default function Datenextraktion() {
 
     try {
       const sourceConfig = configs[sourceId] || {};
+      
+      const existingExtractions = JSON.parse(
+        localStorage.getItem("bewerber_extractions") || "[]"
+      );
+      const alreadyExtractedEmails = existingExtractions
+        .filter((e) => e.sourceId === sourceId)
+        .flatMap((e) => (e.companies || []).map((c) => c.email))
+        .filter(Boolean);
+
       const payload = buildPayload(sourceId, sourceConfig, fieldTags);
+      payload.alreadyExtractedEmails = alreadyExtractedEmails;
+
+      if (alreadyExtractedEmails.length > 0) {
+        addLog("info", `Skipping ${alreadyExtractedEmails.length} already extracted email(s)...`);
+      }
 
       const url = `${API_BASE}/extract`;
 
@@ -750,7 +764,7 @@ export default function Datenextraktion() {
       addLog("info", "Only companies with email will be kept...");
 
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 300000);
+      const timeoutId = setTimeout(() => controller.abort(), 1200000);
 
       const response = await fetch(url, {
         method: "POST",
@@ -805,9 +819,22 @@ export default function Datenextraktion() {
 
       setShowResults(true);
 
-      const existing = JSON.parse(
+      const allExisting = JSON.parse(
         localStorage.getItem("bewerber_extractions") || "[]"
       );
+
+      const existingForSource = allExisting.filter((e) => e.sourceId === sourceId);
+      const existingEmails = new Set(
+        existingForSource.flatMap((e) => (e.companies || []).map((c) => c.email)).filter(Boolean)
+      );
+
+      const newCompanies = companies.filter((c) => !existingEmails.has(c.email));
+      const mergedCompanies = [
+        ...existingForSource.flatMap((e) => e.companies || []),
+        ...newCompanies,
+      ];
+
+      const otherSources = allExisting.filter((e) => e.sourceId !== sourceId);
 
       const extraction = {
         id: crypto.randomUUID(),
@@ -816,22 +843,26 @@ export default function Datenextraktion() {
         sourceId,
         field: fieldTags.join(", "),
         status: "Data extracted",
-        companies,
-        totalItems: companies.length,
+        companies: mergedCompanies,
+        totalItems: mergedCompanies.length,
         config: sourceConfig,
       };
 
       localStorage.setItem(
         "bewerber_extractions",
-        JSON.stringify([extraction, ...existing])
+        JSON.stringify([extraction, ...otherSources])
       );
+
+      if (newCompanies.length < companies.length) {
+        addLog("info", `${companies.length - newCompanies.length} duplicate(s) skipped (already extracted).`);
+      }
 
     } catch (err) {
       console.error("Extraction Error:", err);
       stopStream();
       if (err.name === 'AbortError') {
-        setError("Request timed out after 5 minutes.");
-        addLog("error", "Request timed out after 5 minutes.");
+        setError("Request timed out after 20 minutes.");
+        addLog("error", "Request timed out after 20 minutes.");
       } else {
         setError(err.message);
         addLog("error", err.message);
