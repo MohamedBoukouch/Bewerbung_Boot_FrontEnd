@@ -137,11 +137,21 @@ export default function DashboardClientLayout() {
           onClick={goHome}
           className="flex items-center gap-3 px-4 py-5 border-b border-gray-100 min-h-[64px] cursor-pointer hover:bg-gray-50 transition-colors"
         >
-          <div className="flex-shrink-0"><Logo /></div>
+          <Image 
+    src="../assets/logo.png" 
+    alt="Bewerber Logo" 
+    width={36} 
+    height={36}
+    className="object-contain"
+  />
           <span className={`text-[17px] font-bold text-gray-900 tracking-tight whitespace-nowrap transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0 md:hidden"}`}>
             Bewerber
           </span>
         </div>
+
+
+
+        
 
         <nav className="flex flex-col gap-0.5 px-2 pt-4">
           {NAV.map(({ to, label, Icon, end }) => (
