@@ -58,9 +58,9 @@ const SOURCES = [
   { id: "aubiplus", label: "Aubi-plus", badge: null, logo: <img src="/assets/icons/aubi-plus.png" alt="Aubi-plus" className="w-8 h-8 object-contain rounded-full" />, type: "maps" },
   { id: "ausbildungde", label: "Ausbildung.de", badge: "New", logo: <img src="/assets/icons/ausbildung.png" alt="Ausbildung.de" className="w-8 h-8 object-contain rounded-lg" />, type: "maps" },
   { id: "azubica", label: "Azubica", badge: "New", logo: <img src="/assets/icons/azubica.png" alt="Azubica" className="w-8 h-8 object-contain rounded-lg" />, type: "maps" },
-  { id: "indeed", label: "Indeed", badge: "Soon", disabled: true, logo: <img src="/assets/icons/indeed.png" alt="Indeed" className="w-8 h-8 object-contain rounded-full grayscale opacity-60" />, type: "indeed" },
-  { id: "linkedin", label: "LinkedIn", badge: "Soon", disabled: true, logo: <img src="/assets/icons/linkedin.png" alt="LinkedIn" className="w-8 h-8 object-contain rounded-lg grayscale opacity-60" />, type: "linkedin" },
-  { id: "xing", label: "Xing", badge: "Soon", disabled: true, logo: <img src="/assets/icons/xing.png" alt="Xing" className="w-8 h-8 object-contain rounded-lg grayscale opacity-60" />, type: "xing" },
+  { id: "indeed", label: "Indeed", badge: null, logo: <img src="/assets/icons/indeed.png" alt="Indeed" className="w-8 h-8 object-contain rounded-full" />, type: "indeed" },
+  { id: "linkedin", label: "LinkedIn", badge: null, logo: <img src="/assets/icons/linkedin.png" alt="LinkedIn" className="w-8 h-8 object-contain rounded-lg" />, type: "linkedin" },
+  { id: "xing", label: "Xing", badge: null, logo: <img src="/assets/icons/xing.png" alt="Xing" className="w-8 h-8 object-contain rounded-lg" />, type: "xing" },
 ];
 
 /* ── Arbeitsagentur Config ── */
