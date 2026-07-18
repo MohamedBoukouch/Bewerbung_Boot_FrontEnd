@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-
+import logo from "../assets/logo.png";  // ✅ correct
 /* ── Icons ─────────────────────────────────────────────── */
 const IconTarget = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -138,7 +138,7 @@ export default function DashboardClientLayout() {
           className="flex items-center gap-3 px-4 py-5 border-b border-gray-100 min-h-[64px] cursor-pointer hover:bg-gray-50 transition-colors"
         >
           <img 
-            src="../assets/logo.png" 
+            src={logo} 
             alt="Bewerber Logo" 
             width={36} 
             height={36}
