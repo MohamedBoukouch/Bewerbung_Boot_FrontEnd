@@ -763,41 +763,73 @@ export default function Datenextraktion() {
       addLog("info", `Connecting to ${source.label}...`);
       addLog("info", "Only companies with email will be kept...");
 
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 1200000);
+      let response = null;
+      let data = null;
+      const maxRetries = 4;
 
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
-        body: JSON.stringify(payload),
-        signal: controller.signal,
-      });
+      for (let attempt = 0; attempt < maxRetries; attempt++) {
+        if (abortRef.current) {
+          throw new Error("Extraction stopped by user.");
+        }
 
-      clearTimeout(timeoutId);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 1200000);
 
-      console.log("Status:", response.status);
+        try {
+          if (attempt > 0) {
+            addLog("info", `Retrying connection (attempt ${attempt + 1}/${maxRetries})...`);
+          }
 
-      if (abortRef.current) return;
+          response = await fetch(url, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+            },
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+          });
 
-      const contentType = response.headers.get("content-type");
+          clearTimeout(timeoutId);
 
-      if (!response.ok) {
-        const text = await response.text();
-        console.error("Backend Error:", text);
-        throw new Error(`HTTP ${response.status}\n${text}`);
+          if (response.status === 502 || response.status === 503 || response.status === 504) {
+            if (attempt < maxRetries - 1) {
+              addLog("info", `Server temporarily unavailable (${response.status}), retrying in 2s...`);
+              await new Promise((r) => setTimeout(r, 2000));
+              continue;
+            }
+          }
+
+          if (!response.ok) {
+            const text = await response.text();
+            console.error("Backend Error:", text);
+            throw new Error(`HTTP ${response.status}\n${text}`);
+          }
+
+          if (!response.headers.get("content-type")?.includes("application/json")) {
+            const text = await response.text();
+            console.error(text);
+            throw new Error("Backend did not return JSON.\n\n" + text);
+          }
+
+          data = await response.json();
+          console.log("Backend Response:", data);
+          break;
+
+        } catch (err) {
+          clearTimeout(timeoutId);
+          if (attempt < maxRetries - 1) {
+            addLog("info", `Connection failed (${err.message || err.name || 'network error'}), retrying in 2s...`);
+            await new Promise((r) => setTimeout(r, 2000));
+            continue;
+          }
+          throw err;
+        }
       }
 
-      if (!contentType?.includes("application/json")) {
-        const text = await response.text();
-        console.error(text);
-        throw new Error("Backend did not return JSON.\n\n" + text);
+      if (!data) {
+        throw new Error("Failed to connect to server after multiple retries.");
       }
-
-      const data = await response.json();
-      console.log("Backend Response:", data);
 
       stopStream();
 
