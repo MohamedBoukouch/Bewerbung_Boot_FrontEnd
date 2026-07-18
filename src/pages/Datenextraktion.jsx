@@ -788,6 +788,7 @@ export default function Datenextraktion() {
             },
             body: JSON.stringify(payload),
             signal: controller.signal,
+            credentials: "include",
           });
 
           clearTimeout(timeoutId);
