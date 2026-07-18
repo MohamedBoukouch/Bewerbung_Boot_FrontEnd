@@ -58,9 +58,9 @@ const SOURCES = [
   { id: "aubiplus", label: "Aubi-plus", badge: null, logo: <img src="/assets/icons/aubi-plus.png" alt="Aubi-plus" className="w-8 h-8 object-contain rounded-full" />, type: "maps" },
   { id: "ausbildungde", label: "Ausbildung.de", badge: "New", logo: <img src="/assets/icons/ausbildung.png" alt="Ausbildung.de" className="w-8 h-8 object-contain rounded-lg" />, type: "maps" },
   { id: "azubica", label: "Azubica", badge: "New", logo: <img src="/assets/icons/azubica.png" alt="Azubica" className="w-8 h-8 object-contain rounded-lg" />, type: "maps" },
-  { id: "indeed", label: "Indeed", badge: "New", logo: <img src="/assets/icons/indeed.png" alt="Indeed" className="w-8 h-8 object-contain rounded-full" />, type: "indeed" },
-  { id: "linkedin", label: "LinkedIn", badge: "New", logo: <img src="/assets/icons/linkedin.png" alt="LinkedIn" className="w-8 h-8 object-contain rounded-lg" />, type: "linkedin" },
-  { id: "xing", label: "Xing", badge: "New", logo: <img src="/assets/icons/xing.png" alt="Xing" className="w-8 h-8 object-contain rounded-lg" />, type: "xing" },
+  { id: "indeed", label: "Indeed", badge: "Soon", disabled: true, logo: <img src="/assets/icons/indeed.png" alt="Indeed" className="w-8 h-8 object-contain rounded-full grayscale opacity-60" />, type: "indeed" },
+  { id: "linkedin", label: "LinkedIn", badge: "Soon", disabled: true, logo: <img src="/assets/icons/linkedin.png" alt="LinkedIn" className="w-8 h-8 object-contain rounded-lg grayscale opacity-60" />, type: "linkedin" },
+  { id: "xing", label: "Xing", badge: "Soon", disabled: true, logo: <img src="/assets/icons/xing.png" alt="Xing" className="w-8 h-8 object-contain rounded-lg grayscale opacity-60" />, type: "xing" },
 ];
 
 /* ── Arbeitsagentur Config ── */
@@ -1095,20 +1095,20 @@ export default function Datenextraktion() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4 sm:mb-6">
-        {SOURCES.map(({ id, label, badge, logo }) => {
-          const isBald = badge === "Bald";
+        {SOURCES.map(({ id, label, badge, logo, disabled }) => {
+          const isDisabled = !!disabled;
           const isChecked = !!selected[id];
 
           return (
             <button
               key={id}
-              onClick={() => toggle(id, isBald)}
-              disabled={isBald}
+              onClick={() => toggle(id, isDisabled)}
+              disabled={isDisabled}
               className={`
                 flex items-center gap-3 px-3 sm:px-4 py-3 sm:py-3.5 rounded-2xl border text-left
                 transition-all duration-150
-                ${isBald
-                  ? "border-gray-200 bg-white opacity-60 cursor-not-allowed"
+                ${isDisabled
+                  ? "border-gray-200 bg-gray-50 opacity-60 cursor-not-allowed grayscale"
                   : isChecked
                   ? "border-indigo-400 bg-indigo-50 shadow-sm"
                   : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm cursor-pointer"
@@ -1122,6 +1122,9 @@ export default function Datenextraktion() {
               )}
               {badge === "Bald" && (
                 <span className="text-[11px] font-bold text-orange-500 bg-orange-100 px-2 py-0.5 rounded-full flex-shrink-0">Bald</span>
+              )}
+              {badge === "Soon" && (
+                <span className="text-[11px] font-bold text-gray-500 bg-gray-200 px-2 py-0.5 rounded-full flex-shrink-0">قريباً</span>
               )}
               <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 ${isChecked ? "bg-indigo-600 border-indigo-600" : "border-gray-300 bg-white"}`}>
                 {isChecked && (
