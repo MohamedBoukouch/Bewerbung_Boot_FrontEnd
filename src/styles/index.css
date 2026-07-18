@@ -2,7 +2,74 @@
 
 @import "tailwindcss";
 
+/* Enable class-based dark mode: toggled via .dark on <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
 html,
 body {
   font-family: 'Cairo', sans-serif;
+}
+
+/* ===== Global dark theme =====
+   Components use hardcoded Tailwind grays, so we override the core
+   surfaces globally when .dark is active for a coherent dark UI. */
+.dark body {
+  background-color: #0b1120;
+  color: #e5e7eb;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-50\/50,
+.dark .bg-white {
+  background-color: #111827;
+}
+
+.dark .bg-gray-100,
+.dark .bg-gray-200 {
+  background-color: #1f2937;
+}
+
+.dark .text-gray-900 {
+  color: #f3f4f6;
+}
+
+.dark .text-gray-800 {
+  color: #e5e7eb;
+}
+
+.dark .text-gray-700 {
+  color: #d1d5db;
+}
+
+.dark .text-gray-600 {
+  color: #9ca3af;
+}
+
+.dark .text-gray-500 {
+  color: #9ca3af;
+}
+
+.dark .text-gray-400 {
+  color: #cbd5e1;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200,
+.dark .border-gray-300 {
+  border-color: #1f2937;
+}
+
+.dark .shadow-gray-200\/50,
+.dark .shadow-gray-100\/80,
+.dark .shadow-gray-100\/60 {
+  --tw-shadow-color: #000000;
+}
+
+.dark .ring-indigo-100 {
+  --tw-ring-color: #3730a3;
+}
+
+/* Tweak the subtle grid background so it stays visible in dark mode */
+.dark [style*="linear-gradient(#6366f1"] {
+  opacity: 0.06 !important;
 }

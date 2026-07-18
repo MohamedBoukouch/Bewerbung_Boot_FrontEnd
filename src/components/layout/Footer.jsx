@@ -1,5 +1,3 @@
-Footer.jsx
-
 import React from 'react';
 
 export default function Footer() {
@@ -12,13 +10,13 @@ export default function Footer() {
           <div className="flex flex-col items-center md:items-start gap-3">
             <h3 className="text-gray-900 font-normal text-sm md:text-base">تواصل معنا</h3>
             <a
-              href="https://wa.me/212600000000"
+              href="https://wa.me/2120659159044"
               target="_blank"
               rel="noopener noreferrer"
               className="w-10 h-10 md:w-11 md:h-11 flex items-center justify-center rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all text-gray-400 hover:text-green-500"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.25-4.38c0-4.54 3.7-8.23 8.24-8.23m-4.52 4.7c-.16 0-.43.06-.66.31s-.87.85-.87 2.07.89 2.4 1.02 2.57c.12.16 1.75 2.67 4.25 3.74.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28-.26-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.56.13-.16.26-.65.81-.79.98-.15.16-.29.18-.55.06-.26-.13-1.08-.4-2.06-1.27-.76-.68-1.28-1.51-1.43-1.77-.15-.26-.02-.4.11-.53.11-.11.26-.29.38-.44.13-.14.17-.25.26-.41.08-.16.04-.31-.02-.44-.06-.13-.56-1.36-.78-1.86-.2-.48-.41-.42-.56-.43z"/>
               </svg>
             </a>
           </div>
@@ -43,6 +41,7 @@ export default function Footer() {
               المنصة الأولى فالمغرب باش تلقى شركات ألمانيا وتبعت ليهم الإيميلات أوتوماتيكياً.
             </p>
           </div>
+
         </div>
       </div>
     </footer>

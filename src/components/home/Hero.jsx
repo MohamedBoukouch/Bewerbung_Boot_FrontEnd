@@ -4,7 +4,7 @@ import certificateImage from "../../assets/certificate.png";
 
 const Hero = () => {
   return (
-    <section className="relative w-full bg-gray-50/50 pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20 overflow-hidden font-['Cairo',sans-serif]">
+    <section className="relative w-full bg-gray-50/50 dark:bg-[#0b1120] pt-24 md:pt-28 lg:pt-32 pb-12 md:pb-16 lg:pb-20 overflow-hidden font-['Cairo',sans-serif]">
       {/* Subtle grid background */}
       <div 
         className="absolute inset-0 opacity-[0.03]"
