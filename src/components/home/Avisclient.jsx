@@ -4,9 +4,9 @@ import avis1 from '../../assets/avisclient/1.jpeg';
 import avis2 from '../../assets/avisclient/2.jpeg';
 import avis3 from '../../assets/avisclient/3.jpeg';
 import avis4 from '../../assets/avisclient/4.jpeg';
-import avis5 from '../../assets/avisclient/5.jpeg';
+// import avis5 from '../../assets/avisclient/5.jpeg';
 
-const images = [avis1, avis2, avis3, avis4, avis5];
+const images = [avis1, avis2, avis3, avis4];
 
 // Only duplicate once — animation moves exactly -50% (one full set)
 const track = [...images, ...images];
