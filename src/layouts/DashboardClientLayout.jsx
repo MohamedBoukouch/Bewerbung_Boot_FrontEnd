@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import logo from "../assets/logo.png";  // ✅ correct
+import logo from "../assets/logo.png";
 /* ── Icons ─────────────────────────────────────────────── */
 const IconTarget = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
