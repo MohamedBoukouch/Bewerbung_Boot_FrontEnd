@@ -145,7 +145,7 @@ export default function DashboardClientLayout() {
             className="object-contain"
           />
           <span className={`text-[17px] font-bold text-gray-900 tracking-tight whitespace-nowrap transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0 md:hidden"}`}>
-            Bewerber
+             Bewerbungs
           </span>
         </div>
 
@@ -263,10 +263,15 @@ export default function DashboardClientLayout() {
             </div>
             Tutorial Video
           </button>
-          <button className="flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-lg bg-green-500 hover:bg-green-600 transition-colors text-white text-[13px] font-bold">
+          <a
+            href="https://whatsapp.com/channel/0029Vb8PdnYHFxOsQSslP30F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full px-3 py-2.5 rounded-lg bg-green-500 hover:bg-green-600 transition-colors text-white text-[13px] font-bold"
+          >
             <IconWhatsapp />
-            Kontakt mit dem Entwickler
-          </button>
+            <span className={`transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0 md:hidden"}`}>Join uns auf WhatsApp</span>
+          </a>
         </div>
       </aside>
 

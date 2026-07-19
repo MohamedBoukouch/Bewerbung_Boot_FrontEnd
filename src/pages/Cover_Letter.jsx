@@ -89,24 +89,24 @@ const IconSparkle = () => (
 /* ── General Letter Templates (NO company-specific placeholders) ── */
 const TEMPLATES = {
   ausbildung: {
-    subject: "Application for an Apprenticeship Position",
-    body: `Dear Hiring Manager,
+    subject: "Bewerbung um einen Ausbildungsplatz",
+    body: `Sehr geehrte Damen und Herren,
 
-I am writing to express my strong interest in an apprenticeship position at your company. I have carefully researched your organization and am impressed by its excellent reputation and commitment to innovation.
+mit großem Interesse habe ich Ihr Stellenangebot für einen Ausbildungsplatz entdeckt und bewerbe mich hiermit um einen Platz in Ihrem Unternehmen.
 
-I am a motivated and dedicated individual with the following strengths:
-• Reliability and punctuality
-• Strong teamwork and communication skills
-• Willingness to learn and high level of commitment
+Ich bin eine zuverlässige und motivierte Person, die sich durch folgende Eigenschaften auszeichnet:
+• Pünktlichkeit und Zuverlässigkeit
+• Teamfähigkeit und gute Kommunikationsskills
+• Hohe Lernbereitschaft und Engagement
 • {{USER_SKILL}}
 
-I am eager to begin my professional journey and contribute positively to your team. I am confident that my enthusiasm and dedication would make me a valuable asset.
+Ich möchte meine berufliche Laufbahn bei Ihnen beginnen und einen positiven Beitrag zu Ihrem Team leisten. Ich bin überzeugt, dass meine Begeisterung und mein Engagement mich zu einer wertvollen Unterstützung machen.
 
-I would be very grateful for the opportunity to discuss how I can contribute to your company in a personal interview.
+Ich wäre Ihnen sehr dankbar für die Möglichkeit, mich in einem persönlichen Gespräch näher vorzustellen.
 
-Thank you for considering my application. I look forward to your response.
+Vielen Dank für Ihre Zeit und Ihre Überlegung meiner Bewerbung. Ich freue mich auf Ihre Rückmeldung.
 
-Sincerely,
+Mit freundlichen Grüßen,
 
 {{USER_NAME}}
 {{USER_EMAIL}}
@@ -114,24 +114,24 @@ Sincerely,
 {{USER_ADDRESS}}`,
   },
   praktikum: {
-    subject: "Application for an Internship Position",
-    body: `Dear Hiring Manager,
+    subject: "Bewerbung um ein Praktikum",
+    body: `Sehr geehrte Damen und Herren,
 
-I am writing to apply for an internship position at your company. As a {{USER_STATUS}}, I am actively seeking opportunities to gain practical experience and develop my professional skills.
+hiermit bewerbe ich mich um einen Praktikumsplatz in Ihrem Unternehmen. Als {{USER_STATUS}} suche ich aktiv nach Möglichkeiten, praktische Erfahrungen zu sammeln und meine beruflichen Fähigkeiten weiterzuentwickeln.
 
-Your company has caught my attention due to its outstanding reputation for quality and innovation. I am particularly excited about the prospect of learning from experienced professionals in a dynamic environment.
+Ihr Unternehmen hat mein Interesse geweckt, da es für hervorragende Qualität und Innovation steht. Die Aussicht, von erfahrenen Fachkräften in einem dynamischen Umfeld zu lernen, begeistert mich besonders.
 
-My relevant skills and knowledge include:
+Meine relevanten Fähigkeiten und Kenntnisse umfassen:
 • {{USER_SKILL}}
-• Basic knowledge in relevant technical areas
-• Very good communication skills in English and other languages
-• Quick learner with strong adaptability
+• Grundkenntnisse in relevanten technischen Bereichen
+• Sehr gute Kommunikationsfähigkeiten in Deutsch und anderen Sprachen
+• Schnelle Auffassungsgabe und hohe Anpassungsfähigkeit
 
-I am flexible, highly motivated, and ready to take on new challenges. I would welcome the chance to contribute to your team while gaining valuable hands-on experience.
+Ich bin flexibel, hochmotiviert und bereit, mich neuen Herausforderungen zu stellen. Ich würde die Möglichkeit schätzen, mein Team zu unterstützen und gleichzeitig wertvolle praktische Erfahrungen zu sammeln.
 
-Thank you for considering my application. I hope to hear from you soon.
+Vielen Dank für Ihre Zeit und Ihre Überlegung meiner Bewerbung. Ich hoffe, bald von Ihnen zu hören.
 
-Sincerely,
+Mit freundlichen Grüßen,
 
 {{USER_NAME}}
 {{USER_EMAIL}}
@@ -139,24 +139,24 @@ Sincerely,
 {{USER_ADDRESS}}`,
   },
   werkstudent: {
-    subject: "Application for a Working Student Position",
-    body: `Dear Hiring Manager,
+    subject: "Bewerbung um eine Werkstudentenstelle",
+    body: `Sehr geehrte Damen und Herren,
 
-I am writing to apply for a working student position at your company. As a student in {{USER_STATUS}}, I am looking for an opportunity to combine my academic studies with practical professional experience.
+hiermit bewerbe ich mich um eine Werkstudentenstelle in Ihrem Unternehmen. Als {{USER_STATUS}} suche ich nach einer Möglichkeit, mein akademisches Studium mit praktischer Berufserfahrung zu verbinden.
 
-I am drawn to your company because of its innovative approach and strong industry presence. I believe that working with your team would provide me with invaluable insights and skills.
+Ich bin von Ihrem Unternehmen begeistert, da es für innovative Ansätze und starke Präsenz in der Branche steht. Ich bin überzeugt, dass die Arbeit in Ihrem Team mir unschätzbare Einblicke und Fähigkeiten vermitteln würde.
 
-My qualifications include:
+Meine Qualifikationen umfassen:
 • {{USER_SKILL}}
-• Strong analytical and problem-solving abilities
-• Excellent time management and organizational skills
-• Team-oriented mindset with high initiative
+• Starke analytische Fähigkeiten und Problemlösungskompetenz
+• Ausgezeichnetes Zeitmanagement und Organisationstalent
+• Teamorientierte Denkweise mit hoher Eigeninitiative
 
-I am available for approximately 20 hours per week and am flexible with scheduling to accommodate both my studies and work responsibilities.
+Ich stehe für etwa 20 Stunden pro Woche zur Verfügung und bin flexibel in der Gestaltung meiner Arbeitszeiten, um Studium und Beruf optimal zu vereinbaren.
 
-I would be delighted to discuss how I can contribute to your team. Thank you for your time and consideration.
+Ich würde mich freuen, mich mit Ihnen darüber auszutauschen, wie ich zu Ihrem Team beitragen kann. Vielen Dank für Ihre Zeit und Aufmerksamkeit.
 
-Sincerely,
+Mit freundlichen Grüßen,
 
 {{USER_NAME}}
 {{USER_EMAIL}}
@@ -164,24 +164,24 @@ Sincerely,
 {{USER_ADDRESS}}`,
   },
   vollzeit: {
-    subject: "Application for a Full-Time Position",
-    body: `Dear Hiring Manager,
+    subject: "Bewerbung um eine Vollzeitstelle",
+    body: `Sehr geehrte Damen und Herren,
 
-I am writing to express my interest in a full-time position at your company. With my background and passion for professional growth, I am confident that I would be a strong addition to your team.
+mit großem Interesse habe ich Ihr Stellenangebot für eine Vollzeitstelle entdeckt und bewerbe mich hiermit um eine Position in Ihrem Unternehmen. Mit meinem Hintergrund und meiner Leidenschaft für berufliche Weiterentwicklung bin ich überzeugt, eine starke Bereicherung für Ihr Team zu sein.
 
-Throughout my career, I have developed a solid foundation of skills and experience:
+Im Verlauf meiner beruflichen Laufbahn habe ich eine solide Grundlage an Fähigkeiten und Erfahrungen entwickelt:
 • {{USER_SKILL}}
-• Project experience in various professional settings
-• Independent and self-motivated work ethic
-• Leadership and team coordination abilities
+• Projekterfahrung in verschiedenen beruflichen Umfeldern
+• Selbstständige und motivierte Arbeitsweise
+• Führungs- und Teamkoordinationsfähigkeiten
 
-I am particularly impressed by your company's commitment to excellence and would be honored to contribute to your continued success. I am eager to bring my expertise, dedication, and fresh perspective to your organization.
+Ich bin besonders beeindruckt von dem Engagement Ihres Unternehmens für Exzellenz und würde mich freuen, zu Ihrem weiteren Erfolg beizutragen. Ich bin bereit, meine Expertise, mein Engagement und meine frischen Perspektiven in Ihre Organisation einzubringen.
 
-I would welcome the opportunity to discuss my application further and demonstrate how I can add value to your team.
+Ich würde die Gelegenheit schätzen, meine Bewerbung weiter zu erläutern und zu zeigen, wie ich einen Mehrwert für Ihr Team schaffen kann.
 
-Thank you for considering my application. I look forward to the possibility of working together.
+Vielen Dank für Ihre Zeit und Überlegung meiner Bewerbung. Ich freue mich auf die Möglichkeit, mit Ihnen zusammenzuarbeiten.
 
-Sincerely,
+Mit freundlichen Grüßen,
 
 {{USER_NAME}}
 {{USER_EMAIL}}
@@ -327,14 +327,14 @@ export default function Cover_Letter() {
       });
       setSaved(false);
     } catch (e) {
-      alert("Error uploading CV");
+        alert("Fehler beim Hochladen des Lebenslaufs");
     }
   };
 
   /* ── Generate Motivation Letter as a REAL PDF ── */
   const generateMotivationPDF = () => {
     if (!emailBody) {
-      alert("Please generate the cover letter first");
+      alert("Bitte generieren Sie zuerst das Anschreiben");
       return;
     }
 
@@ -407,7 +407,7 @@ export default function Cover_Letter() {
     });
 
     setSaved(false);
-    alert("Cover letter generated as PDF!");
+    alert("Anschreiben als PDF generiert!");
   };
 
   /* ── Save ALL to localStorage ── */
@@ -489,7 +489,7 @@ export default function Cover_Letter() {
   /* ── Download motivation letter as a real PDF file ── */
   const downloadMotivation = () => {
     if (!motivationFile) {
-      alert("Please generate the cover letter first");
+      alert("Bitte generieren Sie zuerst das Anschreiben");
       return;
     }
 
@@ -510,7 +510,7 @@ export default function Cover_Letter() {
         <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
           <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <h3 className="font-bold text-gray-900 flex items-center gap-2">
-              <IconEye /> Preview
+              <IconEye /> Vorschau
             </h3>
             <button onClick={() => setShowPreview(false)} className="text-gray-400 hover:text-gray-600 p-1">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -521,31 +521,31 @@ export default function Cover_Letter() {
           <div className="p-6 overflow-y-auto">
             <div className="border border-gray-200 rounded-xl p-6 bg-white shadow-sm space-y-4">
               <div className="border-b border-gray-100 pb-3">
-                <p className="text-xs text-gray-400 uppercase tracking-wide">Subject</p>
-                <p className="text-sm font-bold text-gray-900">{emailSubject || "No Subject"}</p>
+                 <p className="text-xs text-gray-400 uppercase tracking-wide">Betreff</p>
+                <p className="text-sm font-bold text-gray-900">{emailSubject || "Kein Betreff"}</p>
               </div>
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wide mb-2">Email Body</p>
+                <p className="text-xs text-gray-400 uppercase tracking-wide mb-2">E-Mail Text</p>
                 <div className="text-sm text-gray-800 leading-relaxed whitespace-pre-line font-mono bg-gray-50 p-4 rounded-lg">
-                  {emailBody || "No content generated yet..."}
+                  {emailBody || "Noch kein Inhalt generiert..."}
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3 pt-3 border-t border-gray-100">
                 <div>
                   <p className="text-xs text-gray-400">CV File</p>
-                  <p className="text-sm text-gray-700">{cvFile ? cvFile.name : "No CV uploaded"}</p>
+                     <p className="text-sm text-gray-700">{cvFile ? cvFile.name : "Kein Lebenslauf hochgeladen"}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400">Cover Letter</p>
-                  <p className="text-sm text-gray-700">{motivationFile ? motivationFile.name : "Not yet generated"}</p>
+                     <p className="text-sm text-gray-700">{motivationFile ? motivationFile.name : "Noch nicht generiert"}</p>
                 </div>
               </div>
             </div>
           </div>
           <div className="p-4 border-t border-gray-200 flex justify-end gap-2">
-            <button onClick={() => setShowPreview(false)} className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition">Close</button>
+            <button onClick={() => setShowPreview(false)} className="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg transition">Schließen</button>
             <button onClick={() => { handleSave(); setShowPreview(false); }} className="px-4 py-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center gap-2">
-              <IconSave /> Save
+              <IconSave /> Speichern
             </button>
           </div>
         </div>
@@ -558,7 +558,7 @@ export default function Cover_Letter() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">
-          Cover Letter & CV Builder
+          Anschreiben & Lebenslauf
         </h1>
         {saved && (
           <span className="flex items-center gap-2 bg-green-50 text-green-700 text-sm font-medium px-4 py-2 rounded-full">
@@ -576,37 +576,37 @@ export default function Cover_Letter() {
           <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5 shadow-sm">
             <div className="flex items-center gap-2 mb-4">
               <IconUser />
-              <h2 className="text-base font-bold text-gray-900">Your Information</h2>
+              <h2 className="text-base font-bold text-gray-900">Deine Informationen</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Full Name *</label>
-                <input type="text" value={profile.fullName} onChange={(e) => setProfile({...profile, fullName: e.target.value})} placeholder="John Doe" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
+               <div>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Vollständiger Name *</label>
+                <input type="text" value={profile.fullName} onChange={(e) => setProfile({...profile, fullName: e.target.value})} placeholder="Max Mustermann" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Email *</label>
-                <input type="email" value={profile.email} onChange={(e) => setProfile({...profile, email: e.target.value})} placeholder="john@example.com" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">E-Mail *</label>
+                <input type="email" value={profile.email} onChange={(e) => setProfile({...profile, email: e.target.value})} placeholder="max@example.com" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Phone</label>
-                <input type="tel" value={profile.phone} onChange={(e) => setProfile({...profile, phone: e.target.value})} placeholder="+1 234 567 890" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Telefonnummer</label>
+                <input type="tel" value={profile.phone} onChange={(e) => setProfile({...profile, phone: e.target.value})} placeholder="+49 123 456 789" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Address</label>
-                <input type="text" value={profile.address} onChange={(e) => setProfile({...profile, address: e.target.value})} placeholder="123 Main St, New York, NY 10001" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Adresse</label>
+                <input type="text" value={profile.address} onChange={(e) => setProfile({...profile, address: e.target.value})} placeholder="Musterstraße 1, 12345 Berlin" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1">Status</label>
                 <select value={profile.status} onChange={(e) => setProfile({...profile, status: e.target.value})} className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300 bg-white">
                   <option>Student</option>
-                  <option>Graduate</option>
-                  <option>Professional</option>
-                  <option>Apprentice</option>
+                  <option>Absolvent</option>
+                  <option>Berufstätig</option>
+                  <option>Auszubildender</option>
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Special Skill</label>
-                <input type="text" value={profile.skill} onChange={(e) => setProfile({...profile, skill: e.target.value})} placeholder="e.g. Programming" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Besondere Fähigkeit</label>
+                <input type="text" value={profile.skill} onChange={(e) => setProfile({...profile, skill: e.target.value})} placeholder="z. B. Programmierung" className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300" />
               </div>
             </div>
           </div>
@@ -614,10 +614,10 @@ export default function Cover_Letter() {
           {/* ── CV Upload ── */}
           <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5 shadow-sm">
             <h2 className="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <IconFile /> Resume (CV)
+              <IconFile /> Lebenslauf (CV)
             </h2>
             <DropZone
-              label="Upload CV"
+              label="Lebenslauf hochladen"
               sublabel="PDF, DOC, DOCX (max 5MB)"
               file={cvFile}
               onFile={handleCvUpload}
@@ -639,17 +639,17 @@ export default function Cover_Letter() {
           {/* ── Letter Type & Generate ── */}
           <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5 shadow-sm">
             <h2 className="text-base font-bold text-gray-900 mb-4 flex items-center gap-2">
-              <IconPen /> Email & Cover Letter
+              <IconPen /> E-Mail & Anschreiben
             </h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">Application Type</label>
+                <label className="block text-xs font-semibold text-gray-700 mb-1">Bewerbungstyp</label>
                 <select value={letterType} onChange={(e) => setLetterType(e.target.value)} className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300 bg-white">
-                  <option value="ausbildung">Apprenticeship</option>
-                  <option value="praktikum">Internship</option>
-                  <option value="werkstudent">Working Student</option>
-                  <option value="vollzeit">Full-time</option>
+                  <option value="ausbildung">Ausbildung</option>
+                  <option value="praktikum">Praktikum</option>
+                  <option value="werkstudent">Werkstudent</option>
+                  <option value="vollzeit">Vollzeit</option>
                 </select>
               </div>
               <div className="flex items-end">
@@ -657,30 +657,30 @@ export default function Cover_Letter() {
                   onClick={generateLetter}
                   className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold px-4 py-2.5 rounded-xl transition flex items-center justify-center gap-2"
                 >
-                  <IconSparkle /> Auto Generate
+                  <IconSparkle /> Automatisch generieren
                 </button>
               </div>
             </div>
 
-            {/* Email Subject */}
+            {/* E-Mail Betreff */}
             <div className="mb-3">
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Email Subject</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1">E-Mail Betreff</label>
               <input
                 type="text"
                 value={emailSubject}
                 onChange={(e) => setEmailSubject(e.target.value)}
-                placeholder="Application for a position..."
+                placeholder="Bewerbung um eine Stelle..."
                 className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-indigo-300 font-medium"
               />
             </div>
 
-            {/* Email Body */}
+            {/* E-Mail Text / Anschreiben */}
             <div className="mb-4">
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Email Body / Cover Letter</label>
+              <label className="block text-xs font-semibold text-gray-700 mb-1">E-Mail Text / Anschreiben</label>
               <textarea
                 value={emailBody}
                 onChange={(e) => setEmailBody(e.target.value)}
-                placeholder="Your cover letter will appear here..."
+                placeholder="Ihr Anschreiben erscheint hier..."
                 rows={14}
                 className="w-full border border-gray-200 rounded-xl px-3 py-3 text-sm text-gray-800 outline-none focus:ring-2 focus:ring-indigo-300 resize-none leading-relaxed font-mono"
               />
@@ -693,14 +693,14 @@ export default function Cover_Letter() {
                 disabled={!emailBody}
                 className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold px-4 py-2 rounded-xl transition"
               >
-                <IconFile /> Cover Letter as PDF
+                <IconFile /> Anschreiben als PDF
               </button>
               {motivationFile && (
                 <button
                   onClick={downloadMotivation}
                   className="flex items-center gap-2 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-sm font-bold px-4 py-2 rounded-xl transition"
                 >
-                  <IconDownload /> Download
+                  <IconDownload /> Herunterladen
                 </button>
               )}
             </div>
@@ -708,7 +708,7 @@ export default function Cover_Letter() {
             {motivationFile && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-3 mb-4">
                 <p className="text-xs text-green-700 flex items-center gap-2">
-                  <IconCheck /> Cover Letter PDF ready: <span className="font-medium">{motivationFile.name}</span>
+                   <IconCheck /> Anschreiben-PDF bereit: <span className="font-medium">{motivationFile.name}</span>
                 </p>
               </div>
             )}
@@ -716,17 +716,17 @@ export default function Cover_Letter() {
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-2">
               <button onClick={handleSave} className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl transition">
-                <IconSave /> Save All
+                <IconSave /> Alles speichern
               </button>
               <button onClick={() => setShowPreview(true)} className="flex items-center gap-2 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-sm font-bold px-5 py-2.5 rounded-xl transition">
-                <IconEye /> Preview
+                <IconEye /> Vorschau
               </button>
               <button
                 onClick={goToSendEmail}
                 disabled={!emailBody}
                 className="flex items-center gap-2 bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed text-white text-sm font-bold px-5 py-2.5 rounded-xl transition"
               >
-                <IconSend /> Go to Send Email
+                <IconSend /> Zu E-Mail senden
               </button>
             </div>
           </div>
@@ -734,7 +734,7 @@ export default function Cover_Letter() {
           {/* ── Saved Profiles History ── */}
           {savedProfiles.length > 0 && (
             <div className="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5 shadow-sm">
-              <h2 className="text-base font-bold text-gray-900 mb-3">Saved Profiles</h2>
+              <h2 className="text-base font-bold text-gray-900 mb-3">Gespeicherte Profile</h2>
               <div className="space-y-2 max-h-48 overflow-y-auto">
                 {savedProfiles.map((p, i) => (
                   <div
