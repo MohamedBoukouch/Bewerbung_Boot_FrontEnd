@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
-import logo from "../assets/logo.png";
+// import logo from "../assets/logo.png";
 /* ── Icons ─────────────────────────────────────────────── */
 const IconTarget = () => (
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -137,13 +137,8 @@ export default function DashboardClientLayout() {
           onClick={goHome}
           className="flex items-center gap-3 px-4 py-5 border-b border-gray-100 min-h-[64px] cursor-pointer hover:bg-gray-50 transition-colors"
         >
-          <img 
-            src={logo} 
-            alt="Bewerber Logo" 
-            width={36} 
-            height={36}
-            className="object-contain"
-          />
+          <img src="/assets/logo.png" alt="Logo" />
+
           <span className={`text-[17px] font-bold text-gray-900 tracking-tight whitespace-nowrap transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0 md:hidden"}`}>
              Bewerbungs
           </span>
