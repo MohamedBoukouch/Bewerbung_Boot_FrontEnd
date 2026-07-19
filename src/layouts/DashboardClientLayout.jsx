@@ -137,7 +137,7 @@ export default function DashboardClientLayout() {
           onClick={goHome}
           className="flex items-center gap-3 px-4 py-5 border-b border-gray-100 min-h-[64px] cursor-pointer hover:bg-gray-50 transition-colors"
         >
-          <img src="/assets/logo.png" alt="Logo" />
+          <img src="/assets/logo.png" alt="Logo" className="w-8 h-8 object-contain flex-shrink-0" />
 
           <span className={`text-[17px] font-bold text-gray-900 tracking-tight whitespace-nowrap transition-opacity duration-200 ${open ? "opacity-100" : "opacity-0 md:hidden"}`}>
              Bewerbungs
