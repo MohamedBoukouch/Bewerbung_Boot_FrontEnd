@@ -466,7 +466,7 @@ export default function Cover_Letter() {
   /* ── Navigate to Send Email with data ── */
   const goToSendEmail = () => {
     if (!emailBody || !emailSubject) {
-      alert("Please generate your cover letter first");
+      alert("Bitte generieren Sie zuerst das Anschreiben");
       return;
     }
 
@@ -532,11 +532,11 @@ export default function Cover_Letter() {
               </div>
               <div className="grid grid-cols-2 gap-3 pt-3 border-t border-gray-100">
                 <div>
-                  <p className="text-xs text-gray-400">CV File</p>
+                   <p className="text-xs text-gray-400">Lebenslauf</p>
                      <p className="text-sm text-gray-700">{cvFile ? cvFile.name : "Kein Lebenslauf hochgeladen"}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">Cover Letter</p>
+                   <p className="text-xs text-gray-400">Anschreiben</p>
                      <p className="text-sm text-gray-700">{motivationFile ? motivationFile.name : "Noch nicht generiert"}</p>
                 </div>
               </div>
